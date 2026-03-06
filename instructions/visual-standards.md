@@ -22,6 +22,8 @@
 - **Checklists**: Clear, large checkboxes with animated "Success" states.
 - **Document Preview**: Use a clean, paper-like shadow effect for technical file previews.
 - **Tables**: Strictly bordered with alternating row colors (Zebra striping) for readability of dense regulatory data.
+- **Icons**: Standard `strokeWidth` is **2.5** to ensure a premium, clinical feel. Icons should typically match the color of their adjacent text (e.g., Primary Teal for normal labels).
+- **Buttons**: Every button must have a `gap: 0.5rem` (8px) between icon and text. Use sizing variants (`primarySm`, `primaryLg`) to match typography.
 
 ## Interactive Elements
 - **Feedback**: Use the global `Toast` system for all state transitions (e.g., "Technical File Saved").
@@ -29,5 +31,5 @@
 
 ## Imagery
 - **Source**: AI-generated medical/office environment imagery.
-- **Style**: Professional, brightly lit, high-resolution. Avoid the "Comic Book" style from previous project.
+- **Style**: Professional, brightly lit, high-resolution.
 - **Tags**: `Professional medical office, modern laboratory, high-tech regulation interface, clinical, clean, 4k`.

@@ -5,6 +5,7 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  output: 'standalone',
 };
 
 const finalizedConfig: unknown = withNextIntl(nextConfig);

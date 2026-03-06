@@ -62,3 +62,22 @@ These rules are enforced to keep the codebase maintainable and clean.
 - **Rationale**: Keeps logic simple and manageable. If a function is too complex, split it into smaller, specialized helper functions.
 - **Enforcement**: ESLint `complexity` rule.
 
+## Styling & CSS Architecture
+- **Rule**: Prefer **CSS Modules** (`.module.css`) with Tailwind's `@apply` directive over direct inline Tailwind classes in JSX/TSX for all component-level styling.
+- **Rule**: Direct Tailwind utility usage in JSX is permitted only for layout-level positioning (e.g., `flex`, `grid`, `padding` on a main container) or simple toggles.
+- **Rule**: Always use **configured theme tokens** via `@apply`. Direct CSS properties (e.g., `color: #123456`) are forbidden within CSS files unless they reference a CSS variable defined in `@theme`.
+- **Rule**: Maintain strict separation of concerns: JSX for structure/logic, CSS Modules for visual presentation.
+
+## Tailwind CSS (v4+)
+- **Rule**: Use the `@reference` directive in all CSS Modules to correctly resolve theme variables and utility classes.
+- **Rule**: Standard Tailwind arbitrary values (e.g., `text-[#123456]`) are strictly forbidden. Extend the `@theme` in `globals.css` for any ad-hoc values.
+- **Rule**: Use modern CSS media query syntax (e.g., `@media (width >= theme(--breakpoint-md))`) instead of deprecated `@screen` directives.
+
+## Icon Component Pattern
+- **Rule**: Use a `Record`-based mapping (`ICON_STYLES`) to bind variants to specific CSS classes for both the icon and its wrapper.
+- **Rule**: Load icons statically from `lucide-react`. Dynamic loading is forbidden for core UI icons.
+- **Rule**: The Icon component must NOT accept `size` or `className` props. All styling must be controlled via the `variant` prop to ensure project-wide consistency.
+
+## Deployment & Build
+- **Rule**: Localization (i18n) must be cookie-persistent (`NEXT_LOCALE`) and resolved server-side without URL slugs for a cleaner user experience.
+
