@@ -15,6 +15,12 @@ export default [
       'node_modules/**',
       'dist/**',
       '**/dist/**',
+      'build/**',
+      '**/build/**',
+      '.next/**',
+      '**/.next/**',
+      '.turbo/**',
+      '**/.turbo/**',
       '.nuxt/**',
       '**/.nuxt/**',
       '.output/**',
@@ -31,7 +37,11 @@ export default [
       'apps/gui/metro.config.js',
       'apps/gui/babel.config.js',
       '*.config.js',
-      '*.config.mjs'
+      '*.config.mjs',
+      '*.compiled.js',
+      '**/*.compiled.js',
+      'next-env.d.ts',
+      '**/next-env.d.ts'
     ],
   },
 
@@ -59,6 +69,19 @@ export default [
       ],
       'no-multiple-empty-lines': ['error', { max: 1, maxBOF: 0, maxEOF: 0 }],
       'no-constant-binary-expression': 'error',
+      'no-undef': 'off', // Enabled by TS or added specifically for React if needed
+      'indent': ['error', 2, { 'SwitchCase': 1 }],
+      'quotes': ['error', 'single', { 'avoidEscape': true }],
+      'semi': ['error', 'always'],
+      'comma-dangle': ['error', 'always-multiline'],
+      'object-curly-spacing': ['error', 'always'],
+    },
+  },
+
+  {
+    files: ['**/eslint.config.mjs', '**/next.config.ts'],
+    rules: {
+      'no-restricted-imports': 'off',
     },
   },
 
@@ -177,7 +200,29 @@ export default [
           selector: 'ImportExpression',
           message: 'Dynamic imports (import()) are not allowed. Use static imports instead.',
         },
+        {
+          selector: "JSXAttribute[name.name='className'] Literal[value=/-\\[/]",
+          message: "Tailwind arbitrary values (e.g., -[...]) are forbidden. Please use standard theme classes or extend the theme in globals.css.",
+        },
+        {
+          selector: "JSXAttribute[name.name='className'] TemplateElement[value.raw=/-\\[/]",
+          message: "Tailwind arbitrary values (e.g., -[...]) are forbidden. Please use standard theme classes or extend the theme in globals.css.",
+        },
+        {
+          selector: "MemberExpression[object.name='document'][property.name='cookie']",
+          message: "Direct document.cookie access is forbidden. Use @/lib/cookies for standardized cookie handling.",
+        },
       ],
+    },
+  },
+
+  /**
+   * COOKIE UTILITY EXEMPTION
+   */
+  {
+    files: ['**/src/lib/cookies.ts'],
+    rules: {
+      'no-restricted-syntax': 'off',
     },
   },
 

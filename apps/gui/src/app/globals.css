@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8f9fa;
+  --foreground: #1a5f7a;
+  --primary: #1a5f7a;
+  --secondary: #00a8cc;
+  --success: #2ecc71;
+  --warning: #f39c12;
+  --danger: #e74c3c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-outfit);
+
+  /* Global Background Aura */
+  --blur-aura: 120px;
+  --spacing-aura-size: 500px;
+}
+
+@utility medical-aura {
+  background-color: var(--background);
+  background-image: 
+    radial-gradient(circle at top right, color-mix(in srgb, var(--secondary) 5%, transparent), transparent 40%),
+    radial-gradient(circle at bottom left, color-mix(in srgb, var(--primary) 5%, transparent), transparent 40%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #121212;
+    --foreground: #f8f9fa;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px; /* Minimum font size as per visual-standards.md */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+}

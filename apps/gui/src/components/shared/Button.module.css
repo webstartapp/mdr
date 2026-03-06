@@ -1,0 +1,112 @@
+.base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 0.75rem; /* rounded-xl */
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  outline: none;
+  border: 2px solid transparent;
+  gap: 0.5rem;
+}
+
+.base:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* VARIANTS (Include Sizing) */
+
+/* PRIMARY */
+.primary {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(26, 95, 122, 0.1), 0 2px 4px -1px rgba(26, 95, 122, 0.06);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: rgba(26, 95, 122, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(26, 95, 122, 0.2), 0 4px 6px -2px rgba(26, 95, 122, 0.1);
+}
+
+.primarySm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.primaryLg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+/* SECONDARY */
+.secondary {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: var(--secondary);
+  color: #ffffff;
+}
+
+.secondary:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* OUTLINE */
+.outline {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: transparent;
+  border-color: rgba(26, 95, 122, 0.1);
+  color: var(--primary);
+}
+
+.outline:hover:not(:disabled) {
+  background-color: rgba(26, 95, 122, 0.05);
+  border-color: var(--primary);
+}
+
+.outlineSm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background-color: transparent;
+  border-color: rgba(26, 95, 122, 0.1);
+  color: var(--primary);
+}
+
+.outlineLg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  background-color: transparent;
+  border-color: rgba(26, 95, 122, 0.1);
+  color: var(--primary);
+}
+
+/* GHOST */
+.ghost {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: transparent;
+  color: var(--primary);
+}
+
+.ghost:hover:not(:disabled) {
+  background-color: rgba(26, 95, 122, 0.05);
+  color: var(--secondary);
+}
+
+.ghostSm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  background-color: transparent;
+  color: var(--primary);
+}

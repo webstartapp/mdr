@@ -1,0 +1,70 @@
+@reference "../../app/globals.css";
+
+.heroSlider {
+  @apply relative w-full overflow-hidden py-20 bg-linear-to-br from-white/50 to-gray-50/50;
+
+  @media (width >= theme(--breakpoint-md)) {
+    @apply py-32;
+  }
+}
+
+.container {
+  @apply container mx-auto px-4 relative z-10;
+}
+
+.slideContent {
+  @apply flex flex-col md:flex-row md:items-center;
+}
+
+.infoColumn {
+  @apply w-full mb-12 md:w-1/2 md:mb-0;
+}
+
+.badge {
+  @apply inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 px-3 py-1 rounded-full mb-6;
+}
+
+.badgeText {
+  @apply text-xs font-bold text-secondary uppercase tracking-widest;
+}
+
+.title {
+  @apply text-5xl font-heading font-extrabold text-primary leading-tight mb-6 uppercase tracking-tighter;
+
+  @media (width >= theme(--breakpoint-md)) {
+    @apply text-7xl;
+  }
+}
+
+.subtitle {
+  @apply text-secondary italic;
+}
+
+.description {
+  @apply text-lg text-gray-600 mb-10 max-w-lg normal-case font-sans tracking-normal;
+}
+
+.buttonGroup {
+  @apply flex flex-col sm:flex-row gap-4 sm:gap-4;
+}
+
+.imageColumn {
+  @apply w-full relative md:w-1/2;
+}
+
+.imageWrapper {
+  @apply relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 aspect-video;
+}
+
+/* Bottom-left compliance badge */
+.complianceBadge {
+  @apply absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl flex items-center gap-4 border border-gray-100;
+}
+
+.complianceLabel {
+  @apply text-xs text-gray-500 font-bold uppercase tracking-wider;
+}
+
+.complianceStatus {
+  @apply text-lg font-heading font-bold text-primary;
+}

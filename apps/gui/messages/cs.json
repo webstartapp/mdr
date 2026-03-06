@@ -1,0 +1,40 @@
+{
+    "Header": {
+        "solutions": "Řešení",
+        "services": "Služby",
+        "compliance": "Shoda (MDR)",
+        "login": "Přihlásit se",
+        "getStarted": "Začít nyní"
+    },
+    "Hero": {
+        "title": "Zvládněte shodu s MDR s",
+        "subtitle": "jistotou",
+        "description": "Nepokročilejší platforma řízená AI pro výrobce zdravotnických prostředků. Navigujte požadavky EU MDR 2017/745 a ISO 13485 s klinickou přesností.",
+        "cta": "Začít bezplatné posouzení",
+        "demo": "Rezervovat demo",
+        "badge": "Verze 2.0 je nyní aktivní",
+        "compliance": "MDR 2017/745",
+        "status": "Plně vyhovující",
+        "imageAlt": "Dashboard zdravotnické regulace"
+    },
+    "Features": {
+        "title": "Vytvořeno pro klinickou excelenci",
+        "subtitle": "Naše sada nástrojů je navržena klinickými odborníky a regulačními inženýry, aby zajistila bezpečný a rychlý vstup vašeho prostředku na trh.",
+        "mdrAdvisor": {
+            "title": "MDR Strategický poradce",
+            "desc": "Průvodce v reálném čase pro klasifikaci, technickou dokumentaci a regulační cesty."
+        },
+        "qmsManager": {
+            "title": "QMS Dynamický manažer",
+            "desc": "Automatizované pracovní postupy ISO 13485 s živým sledováním shody a analýzou nedostatků."
+        },
+        "technicalFile": {
+            "title": "Generátor technické dokumentace",
+            "desc": "AI asistované generování zpráv o klinickém hodnocení a technické dokumentace."
+        }
+    },
+    "Languages": {
+        "en": "English",
+        "cs": "Čeština"
+    }
+}

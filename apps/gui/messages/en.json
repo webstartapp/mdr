@@ -1,0 +1,40 @@
+{
+    "Header": {
+        "solutions": "Solutions",
+        "services": "Services",
+        "compliance": "Compliance",
+        "login": "Login",
+        "getStarted": "Get Started"
+    },
+    "Hero": {
+        "title": "Master MDR Compliance with",
+        "subtitle": "Confidence",
+        "description": "The most advanced AI-driven platform for medical device manufacturers. Navigate EU MDR 2017/745 and ISO 13485 requirements with clinical precision.",
+        "cta": "Start Free Assessment",
+        "demo": "Book a Demo",
+        "badge": "Version 2.0 Now Live",
+        "compliance": "MDR 2017/745",
+        "status": "Fully Compliant",
+        "imageAlt": "Medical Regulation Dashboard"
+    },
+    "Features": {
+        "title": "Built for Clinical Excellence",
+        "subtitle": "Our suite of tools is designed by clinical experts and regulatory engineers to ensure your device reaches the market safely and swiftly.",
+        "mdrAdvisor": {
+            "title": "MDR Strategy Advisor",
+            "desc": "Real-time guidance on classification, technical documentation, and regulatory pathways."
+        },
+        "qmsManager": {
+            "title": "QMS Dynamic Manager",
+            "desc": "Automated ISO 13485 workflows with live compliance tracking and gap analysis."
+        },
+        "technicalFile": {
+            "title": "Technical File Generator",
+            "desc": "AI-assisted generation of clinical evaluation reports and technical documentation."
+        }
+    },
+    "Languages": {
+        "en": "English",
+        "cs": "Čeština"
+    }
+}
