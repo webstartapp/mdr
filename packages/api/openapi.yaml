@@ -7,6 +7,7 @@ info:
 paths:
   /auth/signin:
     post:
+      operationId: signIn
       summary: Sign in a user
       tags:
         - Authentications
@@ -31,12 +32,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/SigninResponse'
         '401':
           description: Invalid credentials
 
   /auth/signout:
     post:
+      operationId: signOut
       summary: Sign out the current user
       tags:
         - Authentications
@@ -46,6 +48,7 @@ paths:
 
   /auth/myself:
     get:
+      operationId: getMyself
       summary: Get the current logged-in user information
       tags:
         - Authentications
@@ -82,3 +85,16 @@ components:
         - firstName
         - lastName
         - role
+    SigninResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
+      required:
+        - user
+        - accessToken
+        - refreshToken

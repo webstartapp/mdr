@@ -1,9 +1,9 @@
 'use client';
 
-import { getAuthMyself, postAuthSignout } from '@gen/mdr';
-import type { User } from '@gen/model';
 import { useState, useEffect, useCallback } from 'react';
 
+import { getMyself, signOut } from '@/gen/mdr';
+import type { User } from '@/gen/mdr.schemas';
 import { LoggerService } from '@/lib/logger';
 
 interface AuthState {
@@ -26,7 +26,7 @@ export const useAuth = (): AuthState => {
     }
 
     try {
-      const response = await getAuthMyself();
+      const response = await getMyself();
       if (response && response.data) {
         setUser(response.data);
       }
@@ -52,7 +52,7 @@ export const useAuth = (): AuthState => {
     }
     setUser(null);
     try {
-      await postAuthSignout();
+      await signOut();
     } catch {
       // Signout error is suppressed per requirements
     }

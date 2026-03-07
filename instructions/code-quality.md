@@ -37,9 +37,8 @@ These rules are enforced to keep the codebase maintainable and clean.
 - **Standard**: 
   - Use `@/` for codebase-local imports (mapped to `src/`).
   - Use explicit root aliases like `@/App` or `@/index` for files outside `src/`.
-  - Use `@api/` for shared API models and services.
   - Use `@backend/` for backend internal modules.
-  - Use `@gen/` for Orval-generated code.
+  - Use `@/gen/` for Orval-generated code.
 - **Enforcement**: ESLint `no-restricted-imports` is active project-wide.
 
 ## Logging Standards

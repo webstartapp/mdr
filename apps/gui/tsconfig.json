@@ -21,8 +21,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@api/*": ["../../packages/api/src/*"],
-      "@gen/*": ["../../packages/api/src/generated/*"],
+      "@/gen/*": ["../../packages/api/src/generated/*"],
       "@messages/*": ["./messages/*"]
     }
   },

@@ -1,5 +1,4 @@
 import { LoggerService } from '@backend/logger';
-import { postAuthSigninBody } from '@gen/mdr.zod';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { z } from 'zod';
@@ -53,7 +52,7 @@ export const authenticate = (req: AuthRequest, res: Response, next: NextFunction
 /**
  * Zod Validation Middleware
  */
-export const validateBody = (schema: typeof postAuthSigninBody) => (req: Request, res: Response, next: NextFunction) => {
+export const validateBody = (schema: z.ZodSchema) => (req: Request, res: Response, next: NextFunction) => {
   const result = schema.safeParse(req.body);
   if (!result.success) {
     res.status(400).json({ error: 'Invalid request data', details: result.error.format() });

@@ -2,24 +2,26 @@ import { defineConfig } from 'orval';
 
 const config = defineConfig({
   mdr: {
-    input: './packages/api/openapi.yaml',
+    input: './openapi.yaml',
     output: {
-      target: './packages/api/src/generated/mdr.ts',
-      schemas: './packages/api/src/generated/model',
+      target: './src/generated/mdr.ts',
       client: 'fetch',
       mode: 'split',
+      prettier: true,
+      clean: false,
       override: {
+        useTypeOverInterfaces: true,
         mutator: {
-          path: './packages/api/src/apiClient.ts',
+          path: './src/apiClient.ts',
           name: 'apiClient',
         },
       },
     },
   },
   mdrZod: {
-    input: './packages/api/openapi.yaml',
+    input: './openapi.yaml',
     output: {
-      target: './packages/api/src/generated/mdr.zod.ts',
+      target: './src/generated/mdr.zod.ts',
       client: 'zod',
     },
   },

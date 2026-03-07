@@ -27,7 +27,7 @@ Welcome to the Echoes of Left Behind project! This file serves as the entry poin
 - **Import Aliases**:
   - `@/` maps to `src/` for codebase-local imports.
   - `@/App` and `@/index` for root GUI files.
-  - `@api/` for shared API models and services.
+  - `@/gen/` for Orval-generated code.
   - **Relative imports (`./`, `../`) are strictly forbidden.**
 
 ## Getting Started

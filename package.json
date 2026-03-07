@@ -13,7 +13,7 @@
         "migration:make": "knex --knexfile knexfile.js migrate:make",
         "migration:latest": "knex --knexfile knexfile.js migrate:latest",
         "migration:down": "knex --knexfile knexfile.js migrate:rollback",
-        "generate:api": "orval --config orval.config.ts"
+        "generate": "orval --config ./packages/api/orval.config.ts"
     },
     "devDependencies": {
         "@eslint/js": "^9.39.3",

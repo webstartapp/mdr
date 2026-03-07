@@ -1,9 +1,10 @@
 import knexConfig from '@backend/knexfile';
-import { User } from '@gen/model';
 import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 import knex, { Knex } from 'knex';
 import { z } from 'zod';
+
+import { User } from '@/gen/mdr.schemas';
 
 dotenv.config({ path: '../../.env' });
 
