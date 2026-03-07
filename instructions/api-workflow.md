@@ -21,5 +21,11 @@ This project follows a **Swagger-first (OpenAPI 3.x)** development workflow. The
    - Backend: Use generated Zod schemas to validate `req.body` using the `validateBody` middleware.
    - Frontend: Use the generated fetcher functions in hooks.
 
-## 4. Coupling
+## 4. Backend Express Route Binding
+To maintain perfect type inference between the Orval-generated tuples and Express request handlers, the backend MUST use the `restAPICall` wrapper (defined in `@backend/service/restAPI`).
+
+- **Usage**: Wrap all Express route handlers with `restAPICall('apiTarget', 'operationId', async (req, res) => { ... })`.
+- **Typing**: This utility automatically extracts the correct `Body` type from the Orval tuple and strongly types `req.body` and `res.json()`. Focus on writing the logic without using `any` or manual type assertions.
+
+## 5. Coupling
 Frontend and backend are strictly coupled through these shared, generated types and schemas. Any drift from the specification or use of manual types for API data is considered a critical violation.
