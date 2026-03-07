@@ -1,6 +1,10 @@
 {
   "files": [],
+  "compilerOptions": {
+    "noImplicitAny": true
+  },
   "references": [
+    { "path": "./packages/api" },
     { "path": "./apps/gui" },
     { "path": "./apps/backend" }
   ]

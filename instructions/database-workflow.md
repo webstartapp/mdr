@@ -8,10 +8,13 @@ This document outlines the standards for database interactions, migrations, and 
 - **Strict Typing**: Use generated types for database rows wherever possible.
 
 ## 2. Migrations
-- **Creation**: Always use `npm run migration:make <name>` to generate a new migration. Never create migration files manually.
+- **Management**: Migrations are strictly managed from the **monorepo root**.
+- **Commands**: 
+  - `npm run migration:make <name>`: Create a new migration.
+  - `npm run migration:latest`: Run all pending migrations.
 - **Incremental**: Never modify an existing migration file that has already been deployed. Always create a new one.
 - **Language**: Migrations are written in **JavaScript** (`.js`) to ensure they run natively in all environments.
-- **TypeScript Exclusion**: Migration files must be excluded from TypeScript compilation (via `tsconfig.json` or directory-based exclusion) to avoid type-check errors in the migration scripts.
+- **Root Config**: The root uses `knexfile.js` to control migration execution across the codebase.
 - **Up/Down**: Every migration must have both an `up` and a `down` function.
 
 ## 3. Repositories / Services

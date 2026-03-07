@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: MDR Adviser API
+  version: 1.0.0
+  description: API for the Medical Device Regulation (MDR) Adviser platform.
+
+paths:
+  /auth/signin:
+    post:
+      summary: Sign in a user
+      tags:
+        - Authentications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+              required:
+                - email
+                - password
+      responses:
+        '200':
+          description: Successful sign-in
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Invalid credentials
+
+  /auth/signout:
+    post:
+      summary: Sign out the current user
+      tags:
+        - Authentications
+      responses:
+        '204':
+          description: Successful sign-out
+
+  /auth/myself:
+    get:
+      summary: Get the current logged-in user information
+      tags:
+        - Authentications
+      responses:
+        '200':
+          description: Current user information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Not authenticated
+      security:
+        - bearerAuth: []
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    User:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        role:
+          type: string
+          enum: [admin, user, pro]
+      required:
+        - firstName
+        - lastName
+        - role

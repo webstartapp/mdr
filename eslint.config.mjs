@@ -33,15 +33,15 @@ export default [
       '**/coverage/**',
       '**/*.json',
       'apps/gui/index.js',
-      'packages/api/src/generated/api.ts',
+      '**/generated/**',
       'apps/gui/metro.config.js',
       'apps/gui/babel.config.js',
       '*.config.js',
       '*.config.mjs',
       '*.compiled.js',
       '**/*.compiled.js',
-      'next-env.d.ts',
-      '**/next-env.d.ts'
+      'apps/gui/next-env.d.ts',
+      '**/*.d.ts'
     ],
   },
 
@@ -96,8 +96,7 @@ export default [
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        project: ['apps/gui/tsconfig.json', 'apps/backend/tsconfig.eslint.json'],
-        tsconfigRootDir: import.meta.dirname,
+        projectService: true,
       },
       globals: {
         ...globals.browser,
@@ -211,6 +210,10 @@ export default [
         {
           selector: "MemberExpression[object.name='document'][property.name='cookie']",
           message: "Direct document.cookie access is forbidden. Use @/lib/cookies for standardized cookie handling.",
+        },
+        {
+          selector: 'TSTypePredicate',
+          message: 'The `is` type predicate is forbidden as it bypasses strict type checking, similar to `as`.',
         },
       ],
     },

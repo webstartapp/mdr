@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-import Button from '@/components/shared/Button';
 import Icon from '@/components/shared/Icon';
 import LanguageSwitcher from '@/components/shared/LanguageSwitcher';
+import Login from '@/components/shared/Login';
 
 const PublicHeader = (): React.JSX.Element => {
   const t = useTranslations('Header');
@@ -28,12 +28,7 @@ const PublicHeader = (): React.JSX.Element => {
 
         <div className="flex items-center space-x-4">
           <LanguageSwitcher />
-          <Button href="/login" variant="ghostSm">
-            {t('login')}
-          </Button>
-          <Button href="/signup" variant="primarySm">
-            {t('getStarted')}
-          </Button>
+          <Login />
           <button className="md:hidden">
             <Icon name="menu" variant="primary" />
           </button>

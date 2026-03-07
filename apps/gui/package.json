@@ -23,13 +23,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@typescript-eslint/eslint-plugin": "^8.56.1",
-    "@typescript-eslint/parser": "^8.56.1",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.6",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-unused-imports": "^4.4.1",
     "globals": "^17.4.0",
     "tailwindcss": "^4",
     "typescript": "^5"

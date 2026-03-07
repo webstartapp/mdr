@@ -10,23 +10,31 @@
         "dev": "npm run dev --workspace=@mdr/gui",
         "lint": "eslint --fix && npx tsc -b",
         "build": "npm run build --workspaces --if-present",
-        "migration:make": "knex --knexfile apps/backend/knexfile.ts migrate:make",
-        "migration:latest": "knex --knexfile apps/backend/knexfile.ts migrate:latest",
-        "migration:down": "knex --knexfile apps/backend/knexfile.ts migrate:rollback",
-        "generate:api": "openapi-generator-cli generate -i packages/api/openapi.yaml -g typescript-axios -o packages/api/src/generated"
+        "migration:make": "knex --knexfile knexfile.js migrate:make",
+        "migration:latest": "knex --knexfile knexfile.js migrate:latest",
+        "migration:down": "knex --knexfile knexfile.js migrate:rollback",
+        "generate:api": "orval --config orval.config.ts"
     },
     "devDependencies": {
-        "@eslint/eslintrc": "^3.3.4",
-        "@eslint/js": "^10.0.1",
-        "@next/eslint-plugin-next": "^16.1.6",
+        "@eslint/js": "^9.39.3",
         "@openapitools/openapi-generator-cli": "^2.13.4",
-        "eslint-plugin-import": "^2.32.0",
-        "eslint-plugin-tailwindcss": "^3.18.2",
-        "eslint-plugin-unused-imports": "^4.4.1",
+        "eslint": "^9.39.3",
         "globals": "^17.4.0",
         "knex": "^3.1.0",
+        "orval": "^7.21.0",
         "ts-node": "^10.9.2",
         "typescript": "^5.0.0",
         "typescript-eslint": "^8.56.1"
+    },
+    "dependencies": {
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-unused-imports": "^4.4.1",
+        "minimatch": "^10.2.4",
+        "zod": "^4.3.6"
+    },
+    "overrides": {
+        "@stoplight/spectral-core": {
+            "minimatch": "^3.1.5"
+        }
     }
 }

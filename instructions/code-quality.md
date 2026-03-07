@@ -17,13 +17,20 @@ These rules are enforced to keep the codebase maintainable and clean.
 
 ## Type Safety
 - **Rule**: Use Strict TypeScript everywhere.
-- **Rule**: Avoid `any`. Use properly defined interfaces and types, avoid surpassing types with `in` or `as`.
-- **Rule**: Non-TS files required by secondary systems (e.g., Knex migrations in `.js`) must be explicitly excluded from the main TypeScript build to maintain environmental consistency.
+- **Rule**: Avoid `any`. Use properly defined interfaces and types.
+- **Rule**: Type assertions using `as` and custom type predicates using `is` (e.g., `val is Type`) are **strictly forbidden**.
+- **Alternative**: Use **Zod schemas** for type narrowing and runtime validation.
+- **Rule**: Non-TS files required by secondary systems (e.g., Knex migrations in `.js`) must be explicitly excluded from the main TypeScript build.
 
 ## Environment Variables
-- **Rule**: No fallback values allowed for environment variables (e.g., `process.env.API_URL || 'http://localhost'`).
+- **Rule**: No fallback values allowed for environment variables.
 - **Enforcement**: Code must throw an error immediately during startup if a required environment variable is missing.
 
+## Linting & Monorepo Infrastructure
+- **Rule**: All linting is managed from the monorepo root using `eslint.config.mjs`.
+- **Standard**: The project uses **ESLint 9**.
+- **Type-Awareness**: The project uses `typescript-eslint`'s **Project Service** for 100% accurate type-aware linting across all packages.
+- **Compliance**: Zero lint errors or warnings are tolerated. Any violation must be fixed immediately.
 
 ## Import Aliases
 - **Rule**: ALL relative imports are strictly forbidden (`./` and `../`).
@@ -31,31 +38,25 @@ These rules are enforced to keep the codebase maintainable and clean.
   - Use `@/` for codebase-local imports (mapped to `src/`).
   - Use explicit root aliases like `@/App` or `@/index` for files outside `src/`.
   - Use `@api/` for shared API models and services.
+  - Use `@backend/` for backend internal modules.
+  - Use `@gen/` for Orval-generated code.
 - **Enforcement**: ESLint `no-restricted-imports` is active project-wide.
 
 ## Logging Standards
 - **Rule**: Always use the `LoggerService` for application logging.
-- **Rule**: Direct `console` calls (e.g., `console.log`, `console.error`) are forbidden.
-- **Exception**: Legitimate fallback logging when the `LoggerService` itself fails or is unavailable.
-- **Enforcement**: Use `// eslint-disable-next-line no-console` only for these specific fallback scenarios.
+- **Rule**: Direct `console` calls are forbidden.
+- **Enforcement**: ESLint `no-console` rule.
 
 ## User Interaction
 - **Rule**: Native `Alert.alert()` and `window.confirm()` are **strictly forbidden**.
-- **Alternative**: Use the global `Toast` component for notifications and the `BottomDock` confirmation tray for interactive decisions.
-- **Rationale**: Native alerts break the professional flow and cannot be styled to match the advisor's clean, medical-grade UI.
+- **Alternative**: Use the global `Toast` component for notifications.
 
 ## Function Style
-- **Rule**: All functions MUST use arrow function expression syntax (`const myFunc = () => { ... }`).
-- **Rationale**: Ensures consistency across the codebase and aligns with modern React and JavaScript patterns.
+- **Rule**: All functions MUST use arrow function expression syntax.
 - **Enforcement**: ESLint `func-style` is set to `expression`.
 
-## Type Assertions
-- **Rule**: Type assertions using `as` are strictly forbidden (e.g., `data as User`).
-- **Standard**: 
-  - Use **Mapping Utilities** (`mapToX`) for converting database types to API types.
-  - Use explicit typing for object literals.
-  - Never use `// eslint-disable-next-line @typescript-eslint/consistent-type-assertions`.
-- **Enforcement**: ESLint `@typescript-eslint/consistent-type-assertions` is set to `never`.
+## Mapping & Data Transformation
+- **Rule**: Use **Mapping Utilities** (`mapToX`) for converting database or internal types to API entities to ensure leak-proof data exposure.
 
 ## Code Complexity
 - **Rule**: Functions must have a cyclomatic complexity of no more than **10**.

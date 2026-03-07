@@ -23,7 +23,12 @@
 - **Document Preview**: Use a clean, paper-like shadow effect for technical file previews.
 - **Tables**: Strictly bordered with alternating row colors (Zebra striping) for readability of dense regulatory data.
 - **Icons**: Standard `strokeWidth` is **2.5** to ensure a premium, clinical feel. Icons should typically match the color of their adjacent text (e.g., Primary Teal for normal labels).
-- **Buttons**: Every button must have a `gap: 0.5rem` (8px) between icon and text. Use sizing variants (`primarySm`, `primaryLg`) to match typography.
+- **Buttons**: Every button must have a `gap: 0.5rem` (8px) between icon and text. 
+- **Standard Variants**: 
+  - `primary`, `primarySm`, `primaryLg`
+  - `secondary`
+  - `outline`, `outlineSm`, `outlineLg`
+  - `ghost`, `ghostSm`
 
 ## Interactive Elements
 - **Feedback**: Use the global `Toast` system for all state transitions (e.g., "Technical File Saved").

@@ -4,7 +4,8 @@
         "services": "Services",
         "compliance": "Compliance",
         "login": "Login",
-        "getStarted": "Get Started"
+        "getStarted": "Get Started",
+        "logout": "Logout"
     },
     "Hero": {
         "title": "Master MDR Compliance with",

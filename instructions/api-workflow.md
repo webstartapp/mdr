@@ -1,17 +1,25 @@
 # API Workflow Instructions
 
-This project follows a Swagger-first (OpenAPI) development workflow, ensuring strictly typed communication between the Next.js frontend and the MDR logic backend.
+This project follows a **Swagger-first (OpenAPI 3.x)** development workflow. The absolute source of truth for all communication is the OpenAPI specification.
 
-## Source of Truth
-- The file `packages/api/openapi.yaml` (or `.json`) is the absolute source of truth for all API communication.
-- **Environment Variables**: API base URLs and secrets must be loaded from strict `.env` files without fallbacks.
-- **NEVER** define entities (interfaces, types, classes) manually in `apps/gui` or `apps/backend` if they are part of the API.
+## 1. Single Point of Truth
+- **Source**: `packages/api/openapi.yaml` (or `.json`) is the definitive definition of the API.
+- **Strict Typing**: Never define entities (interfaces, types, classes) manually in `apps/gui` or `apps/backend` if they are part of the API.
+- **Generation**: All API types, interfaces, and endpoint fetchers MUST be generated using **Orval**.
 
-## Type Generation
-- All types, interfaces, and API calls must be generated from the Swagger specification.
-- Use `npm run generate:api` to update the generated code after changing the Swagger file.
-- Even if an entity is not directly used in an API call but is part of the domain model, it should be defined in the Swagger schema to ensure consistency across the monorepo.
+## 2. Orval Integration
+- **Tool**: Orval is the mandated generator for this project.
+- **Configuration**: Managed via `orval.config.ts` at the monorepo root.
+- **Command**: Use `npm run generate:api` to synchronize the codebase with the OpenAPI specification.
+- **Client**: Use the **Fetch API** for all requests. Axios is strictly forbidden.
+- **Validation**: Orval MUST be configured to generate **Zod schemas** for all request and response bodies.
 
-## Coupling
-- Frontend and backend are heavily coupled through shared types. 
-- Any change to the API structure (e.g., adding a new regulation endpoint) must start with an update to the Swagger file.
+## 3. Workflow
+1. **Define**: Update the OpenAPI specification in `packages/api/openapi.yaml`.
+2. **Generate**: Run the Orval generator.
+3. **Implement**: 
+   - Backend: Use generated Zod schemas to validate `req.body` using the `validateBody` middleware.
+   - Frontend: Use the generated fetcher functions in hooks.
+
+## 4. Coupling
+Frontend and backend are strictly coupled through these shared, generated types and schemas. Any drift from the specification or use of manual types for API data is considered a critical violation.

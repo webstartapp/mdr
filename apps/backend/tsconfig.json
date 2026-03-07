@@ -1,13 +1,25 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "CommonJS",
+    "module": "nodenext",
     "strict": true,
+    "moduleResolution": "nodenext",
     "esModuleInterop": true,
+    "noImplicitAny": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "paths": {
+      "@backend/*": ["./src/*"],
+      "@api/*": ["../../packages/api/src/*"],
+      "@root/*": ["../../*"],
+      "@gen/*": ["../../packages/api/src/generated/*"]
+    },
+    "composite": true
   },
   "include": ["src/**/*"],
+  "references": [
+    { "path": "../../packages/api" }
+  ],
   "exclude": ["node_modules"]
 }
